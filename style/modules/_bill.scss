@@ -1,0 +1,37 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+@use "../components/index" as *;
+
+.bill {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  row-gap: map.get($spacing, 2);
+  align-items: center;
+
+  &__label {
+    font-weight: 700;
+    color: var(--grey-500);
+    @include font-preset-1();
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  &__label-error {
+    text-align: end;
+    font-weight: 700;
+    color: var(--red-400);
+    @include font-preset-4();
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  @include input() {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+
+  @include media-query-md() {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}

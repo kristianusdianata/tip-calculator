@@ -1,0 +1,53 @@
+@use "sass:map";
+@use "./breakpoints" as *;
+
+$fontSize: (
+  fs-1: 0.64rem,
+  fs-2: 0.8rem,
+  fs-3: 1rem,
+  fs-4: 1.25rem,
+  fs-5: 1.563rem,
+  fs-6: 1.953rem,
+  fs-7: 2.441rem,
+  fs-8: 3.052rem,
+  fs-9: 3.815rem,
+);
+
+@function font-color($color) {
+  @if ($color != "") {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+@mixin font-style($color, $font-size) {
+  font-size: $font-size;
+  @if (font-color($color)) {
+    color: $color;
+  }
+}
+
+@mixin font-heading-1($color: "") {
+  @include font-style($color: $color, $font-size: map.get($fontSize, fs-4));
+}
+
+@mixin font-preset-1($color: "") {
+  @include font-style($color: $color, $font-size: map.get($fontSize, fs-3));
+}
+
+@mixin font-preset-2($color: "") {
+  @include font-style($color: $color, $font-size: map.get($fontSize, fs-5));
+}
+
+@mixin font-preset-3($color: "") {
+  @include font-style($color: $color, $font-size: map.get($fontSize, fs-3));
+}
+
+@mixin font-preset-4($color: "") {
+  @include font-style($color: $color, $font-size: map.get($fontSize, fs-2));
+}
+
+@mixin font-preset-5($color: "") {
+  @include font-style($color: $color, $font-size: map.get($fontSize, fs-7));
+}

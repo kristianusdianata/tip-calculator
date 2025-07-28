@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
+    <link rel="stylesheet" href="./style/style.css" />
+    <!-- css end -->
+
+    <!-- js -->
+    <script src="./dist/index.js" type="module"></script>
+    <!-- js end -->
+
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <main>
+      <article class="container">
+        <header class="header">
+          <h1 class="header__title" aria-label="SPLITTER">
+            <img src="./images/logo.svg" alt="logo" />
+          </h1>
+        </header>
+
+        <form class="form">
+          <fieldset class="bill">
+            <legend class="sr-only">Bill</legend>
+            <label for="bill" class="bill__label">Bill</label>
+            <div class="bill__input-group">
+              <div class="bill__input-icon">
+                <img src="./images/icon-dollar.svg" alt="" />
+              </div>
+
+              <input
+                type="number"
+                class="bill__input"
+                placeholder="0"
+                name="bill"
+                id="bill"
+                min="1"
+                aria-invalid="false"
+                aria-describedby="bill-error"
+              />
+            </div>
+            <span id="bill-error" role="alert" class="bill__label-error"></span>
+          </fieldset>
+
+          <fieldset class="tip">
+            <legend class="tip__label">Select Tip %</legend>
+
+            <ul class="tip__list-group">
+              <li class="tip__list-item">
+                <input
+                  name="tip-radio"
+                  type="radio"
+                  id="tip-5"
+                  value="5"
+                  class="tip__radio"
+                />
+                <label for="tip-5" class="tip__button">5%</label>
+              </li>
+              <li class="tip__list-item">
+                <input
+                  name="tip-radio"
+                  type="radio"
+                  id="tip-10"
+                  value="10"
+                  class="tip__radio"
+                />
+                <label for="tip-10" class="tip__button">10%</label>
+              </li>
+              <li class="tip__list-item">
+                <input
+                  name="tip-radio"
+                  type="radio"
+                  id="tip-15"
+                  value="15"
+                  class="tip__radio"
+                />
+                <label for="tip-15" class="tip__button">15%</label>
+              </li>
+              <li class="tip__list-item">
+                <input
+                  name="tip-radio"
+                  type="radio"
+                  id="tip-25"
+                  value="25"
+                  class="tip__radio"
+                />
+                <label for="tip-25" class="tip__button">25%</label>
+              </li>
+              <li class="tip__list-item">
+                <input
+                  name="tip-radio"
+                  type="radio"
+                  id="tip-50"
+                  value="50"
+                  class="tip__radio"
+                />
+                <label for="tip-50" class="tip__button">50%</label>
+              </li>
+              <li class="tip__list-item">
+                <input
+                  type="radio"
+                  name="tip-radio"
+                  id="tip-custom"
+                  class="tip__radio"
+                />
+                <label for="tip-custom" class="sr-only">Custome</label>
+                <input
+                  id="tip-custom-value"
+                  type="number"
+                  name="tip-value"
+                  placeholder="Custom"
+                  class="tip__input"
+                  min="1"
+                  aria-invalid="false"
+                  aria-describedby="tip-error"
+                />
+              </li>
+            </ul>
+
+            <span id="tip-error" role="alert" class="tip__label-error"></span>
+          </fieldset>
+
+          <fieldset class="people">
+            <legend class="sr-only">Number of People</legend>
+            <label for="people" class="people__label">Number of People</label>
+            <div class="people__input-group">
+              <div class="people__input-icon">
+                <img src="./images/icon-person.svg" alt="" />
+              </div>
+
+              <input
+                type="number"
+                class="people__input"
+                placeholder="0"
+                name="people"
+                id="people"
+                min="1"
+                aria-invalid="false"
+                aria-describedby="people-error"
+              />
+            </div>
+            <span
+              id="people-error"
+              role="alert"
+              class="people__label-error"
+            ></span>
+          </fieldset>
+
+          <section class="calculation" aria-label="Calculation section">
+            <ul class="calculation__list-group">
+              <li class="calculation__list-item">
+                <p class="calculation__output-title">Tip Amount</p>
+                <span class="calculation__output-subtitle">/ person</span>
+                <output class="calculation__output-price" id="tip-output"
+                  >$0.00</output
+                >
+              </li>
+
+              <li class="calculation__list-item">
+                <p class="calculation__output-title">Total</p>
+                <span class="calculation__output-subtitle">/ person</span>
+                <output class="calculation__output-price" id="bill-output"
+                  >$0.00</output
+                >
+              </li>
+            </ul>
+
+            <button class="calculation__button" type="reset" disabled>
+              RESET
+            </button>
+          </section>
+        </form>
+      </article>
+    </main>
+  </body>
+</html>

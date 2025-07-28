@@ -1,0 +1,25 @@
+// base
+@use "./base/index" as base;
+
+// layouts
+@use "./layouts/index" as layout;
+
+// components
+@use "./components/index" as componentts;
+
+// module
+@use "./modules/index" as module;
+
+// utils
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0); /* fallback untuk legacy browser */
+  clip-path: inset(50%); /* modern browser */
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+
+@mixin button(
+  $color: var(--white),
+  $bg-color: var(--green-900),
+  $font-weight: 700,
+  $active-color: var(--green-900),
+  $active-bg-color: var(--green-400),
+  $hover-color: var(--green-900),
+  $hover-bg-color: var(--green-200)
+) {
+  &__button {
+    @include font-preset-2($color: $color);
+    background-color: $bg-color;
+    font-weight: $font-weight;
+    padding: map.get($spacing, 2);
+    border-radius: map.get($radius, br-3);
+    inline-size: 100%;
+
+    &:not([disabled]):hover {
+      color: $hover-color;
+      background-color: $hover-bg-color;
+    }
+
+    &--active {
+      color: $active-color;
+      background-color: $active-bg-color;
+    }
+  }
+}

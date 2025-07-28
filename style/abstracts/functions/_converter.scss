@@ -1,0 +1,21 @@
+@use "sass:math";
+
+$baseFontSize: 16px;
+
+@function px-to-em($px) {
+  $value: math.div($px, $baseFontSize) * 1em;
+  $rounded: math.div(math.round($value * 100), 100);
+  @return $rounded;
+}
+
+@function px-to-rem($px) {
+  $value: math.div($px, $baseFontSize) * 1rem;
+  $rounded: math.div(math.round($value * 100), 100);
+  @return $rounded;
+}
+
+@function px-to-percent($basefont: $baseFontSize) {
+  $value: math.div($basefont, 16px);
+  $percent: $value * 100%;
+  @return $percent;
+}

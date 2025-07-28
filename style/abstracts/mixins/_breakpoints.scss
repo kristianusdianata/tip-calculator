@@ -1,0 +1,38 @@
+@use "sass:map";
+@use "../functions/index" as *;
+
+$breakPoints: (
+  sm: px-to-rem(600px),
+  md: px-to-rem(992px),
+  lg: px-to-rem(1200px),
+);
+
+@mixin media-query-sm() {
+  @at-root {
+    @media (min-width: map.get($breakPoints, sm)) {
+      & {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin media-query-md() {
+  @at-root {
+    @media (min-width: map.get($breakPoints, md)) {
+      & {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin media-query-lg() {
+  @at-root {
+    @media (min-width: map.get($breakPoints, lg)) {
+      & {
+        @content;
+      }
+    }
+  }
+}

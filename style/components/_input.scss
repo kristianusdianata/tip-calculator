@@ -1,0 +1,64 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+
+@mixin input(
+  $color: var(--green-900),
+  $bg-color: var(--grey-50),
+  $font-weight: 700,
+  $border-color: var(--grey-50),
+  $padding-inline: map.get($spacing, 6) map.get($spacing, 2),
+  $focus-border-color: var(--green-400),
+  $placeholder-color: var(--grey-400),
+  $placeholder-text-align: end
+) {
+  &__input-group {
+    position: relative;
+    @content;
+  }
+
+  &__input {
+    @include font-preset-2($color: $color);
+    background-color: $bg-color;
+    font-weight: $font-weight;
+    border: 2px solid $border-color;
+    padding-inline: $padding-inline;
+    padding-block: map.get($spacing, 2);
+    border-radius: map.get($radius, br-3);
+    inline-size: 100%;
+    text-align: end;
+
+    &:focus {
+      border: 2px solid $focus-border-color;
+    }
+
+    &::placeholder {
+      color: $placeholder-color;
+    }
+
+    &:placeholder-shown {
+      text-align: $placeholder-text-align;
+    }
+
+    &--error {
+      border: 2px solid var(--red-400);
+
+      &:focus {
+        border: 2px solid var(--red-400);
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      background: none;
+      display: flex;
+      flex-direction: column;
+      block-size: 100%;
+      justify-content: center;
+      padding-inline-start: map.get($spacing, 5);
+
+      & img {
+        block-size: 35%;
+      }
+    }
+  }
+}

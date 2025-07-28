@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "clean": "rmdir /s /q dist",
+    "build": "npm run clean && npx tsc --project tsconfig.json --watch",
+    "build-css": "sass --watch ./style/main.scss ./style/style.css"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

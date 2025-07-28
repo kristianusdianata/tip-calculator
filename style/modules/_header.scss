@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+
+.header {
+  text-align: center;
+  padding: map.get($spacing, 12);
+
+  &__title {
+    inline-size: 100%;
+
+    & img {
+      block-size: 3.5rem;
+    }
+  }
+}

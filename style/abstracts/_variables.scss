@@ -1,0 +1,60 @@
+@use "./functions/index" as *;
+
+/*
+-------------------------------------------------
+    Color
+-------------------------------------------------
+*/
+$colors: (
+  green-200: hsl(173, 61%, 77%),
+  green-400: hsl(172, 67%, 45%),
+  green-900: hsl(183, 100%, 15%),
+  green-800: hsl(183, 80%, 21%),
+  grey-500: hsl(186, 14%, 43%),
+  grey-400: hsl(184, 14%, 56%),
+  grey-200: hsl(185, 41%, 84%),
+  grey-50: hsl(189, 47%, 97%),
+  white: hsl(0, 100%, 100%),
+  red: hsl(4, 100%, 67%),
+  red-100: hsl(356, 100%, 94%),
+  red-400: hsl(0, 91%, 71%),
+);
+
+$baseSpaceSize: 4px;
+
+/*
+-------------------------------------------------
+    Margin & padding
+-------------------------------------------------
+*/
+$spacing: (
+  0: 0,
+  1: px-to-em($baseSpaceSize * 1),
+  2: px-to-em($baseSpaceSize * 2),
+  3: px-to-em($baseSpaceSize * 3),
+  4: px-to-em($baseSpaceSize * 4),
+  5: px-to-em($baseSpaceSize * 5),
+  6: px-to-em($baseSpaceSize * 6),
+  8: px-to-em($baseSpaceSize * 8),
+  10: px-to-em($baseSpaceSize * 10),
+  12: px-to-em($baseSpaceSize * 12),
+  16: px-to-em($baseSpaceSize * 16),
+);
+
+/*
+-------------------------------------------------
+    Radius
+-------------------------------------------------
+*/
+$radius: (
+  br-0: 0,
+  br-1: calc($baseSpaceSize * 0.5),
+  br-2: calc($baseSpaceSize * 1),
+  br-3: calc($baseSpaceSize * 2),
+  br-4: calc($baseSpaceSize * 3),
+  br-5: calc($baseSpaceSize * 4),
+  br-6: calc($baseSpaceSize * 5),
+  br-7: calc($baseSpaceSize * 6),
+  br-8: calc($baseSpaceSize * 8),
+  br-full: 50%,
+);

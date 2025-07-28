@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "../abstracts/index" as *;
+
+.form {
+  background-color: var(--white);
+  border-radius: map.get($radius, br-6);
+  padding: map.get($spacing, 8);
+  display: flex;
+  flex-direction: column;
+  row-gap: map.get($spacing, 8);
+
+  @include media-query-md() {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: map.get($spacing, 10);
+  }
+}
