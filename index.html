@@ -35,14 +35,14 @@
       <article class="container">
         <header class="header">
           <h1 class="header__title">
-            <span class="sr-only">SPLITTER</span>
+            <span class="sr-only" id="app-title">SPLITTER</span>
             <img src="./images/logo.svg" alt="logo" />
           </h1>
         </header>
 
-        <div role="form" class="form">
-          <div class="bill">
-            <label for="bill" class="bill__label">Bill</label>
+        <div role="form" class="form" aria-labelledby="app-title">
+          <div class="bill" role="group" aria-labelledby="bill-label">
+            <label for="bill" class="bill__label" id="bill-label">Bill</label>
             <div class="bill__input-group">
               <div class="bill__input-icon">
                 <img src="./images/icon-dollar.svg" alt="" />
@@ -59,16 +59,15 @@
                 aria-describedby="bill-error"
               />
             </div>
-            <span
-              id="bill-error"
-              role="alert"
-              class="bill__label-error"
-              aria-live="polite"
-            ></span>
+            <span id="bill-error" role="alert" class="bill__label-error"></span>
           </div>
 
-          <div class="tip">
-            <ul class="tip__list-group">
+          <div class="tip" role="group" aria-label="Select Tip Percentage">
+            <ul
+              class="tip__list-group"
+              role="radiogroup"
+              aria-label="Select Tip Percentage"
+            >
               <li class="tip__list-item">
                 <input
                   name="tip-radio"
@@ -136,16 +135,18 @@
                   min="1"
                   aria-invalid="false"
                   aria-describedby="tip-error"
+                  aria-label="Custom tip percentage"
                 />
-                <label for="tip-custom-value" class="sr-only"></label>
               </li>
             </ul>
 
             <span id="tip-error" role="alert" class="tip__label-error"></span>
           </div>
 
-          <div class="people">
-            <label for="people" class="people__label">Number of People</label>
+          <div class="people" role="group" aria-labelledby="people-label">
+            <label for="people" class="people__label" id="people-label"
+              >Number of People</label
+            >
             <div class="people__input-group">
               <div class="people__input-icon">
                 <img src="./images/icon-person.svg" alt="" />
@@ -169,12 +170,15 @@
             ></span>
           </div>
 
-          <div class="calculation">
+          <div class="calculation" role="group" aria-label="Calculation Result">
             <ul class="calculation__list-group">
               <li class="calculation__list-item">
                 <p class="calculation__output-title">Tip Amount</p>
                 <span class="calculation__output-subtitle">/ person</span>
-                <output class="calculation__output-price" id="tip-output"
+                <output
+                  class="calculation__output-price"
+                  id="tip-output"
+                  aria-live="polite"
                   >$0.00</output
                 >
               </li>
@@ -182,7 +186,10 @@
               <li class="calculation__list-item">
                 <p class="calculation__output-title">Total</p>
                 <span class="calculation__output-subtitle">/ person</span>
-                <output class="calculation__output-price" id="bill-output"
+                <output
+                  class="calculation__output-price"
+                  id="bill-output"
+                  aria-live="polite"
                   >$0.00</output
                 >
               </li>
