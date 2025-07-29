@@ -71,7 +71,7 @@ export class People extends Element implements PeopleInterface {
 
   // --------------------------- UI handler start ---------------------------
   errorUI({ isError, errMsg }: { isError: boolean; errMsg: string }): void {
-    this.errorLabel.setInnerText(errMsg);
+    this.errorLabel.setInnerText(errMsg).done();
     this.input
       .toggleClass(`${this.blockName}__input--error`, isError)
       .setAttribute({ "aria-invalid": `${isError}` })
@@ -79,7 +79,7 @@ export class People extends Element implements PeopleInterface {
   }
 
   defaultUI(): void {
-    this.errorLabel.setInnerText("");
+    this.errorLabel.setInnerText("").done();
     const inputField = this.input
       .removeClass(`${this.blockName}__input--error`)
       .setAttribute({ "aria-invalid": "false" })

@@ -34,14 +34,14 @@
     <main>
       <article class="container">
         <header class="header">
-          <h1 class="header__title" aria-label="SPLITTER">
+          <h1 class="header__title">
+            <span class="sr-only">SPLITTER</span>
             <img src="./images/logo.svg" alt="logo" />
           </h1>
         </header>
 
-        <form class="form">
-          <fieldset class="bill">
-            <legend class="sr-only">Bill</legend>
+        <div role="form" class="form">
+          <div class="bill">
             <label for="bill" class="bill__label">Bill</label>
             <div class="bill__input-group">
               <div class="bill__input-icon">
@@ -59,12 +59,15 @@
                 aria-describedby="bill-error"
               />
             </div>
-            <span id="bill-error" role="alert" class="bill__label-error"></span>
-          </fieldset>
+            <span
+              id="bill-error"
+              role="alert"
+              class="bill__label-error"
+              aria-live="polite"
+            ></span>
+          </div>
 
-          <fieldset class="tip">
-            <legend class="tip__label">Select Tip %</legend>
-
+          <div class="tip">
             <ul class="tip__list-group">
               <li class="tip__list-item">
                 <input
@@ -134,14 +137,14 @@
                   aria-invalid="false"
                   aria-describedby="tip-error"
                 />
+                <label for="tip-custom-value" class="sr-only"></label>
               </li>
             </ul>
 
             <span id="tip-error" role="alert" class="tip__label-error"></span>
-          </fieldset>
+          </div>
 
-          <fieldset class="people">
-            <legend class="sr-only">Number of People</legend>
+          <div class="people">
             <label for="people" class="people__label">Number of People</label>
             <div class="people__input-group">
               <div class="people__input-icon">
@@ -164,9 +167,9 @@
               role="alert"
               class="people__label-error"
             ></span>
-          </fieldset>
+          </div>
 
-          <section class="calculation" aria-label="Calculation section">
+          <div class="calculation">
             <ul class="calculation__list-group">
               <li class="calculation__list-item">
                 <p class="calculation__output-title">Tip Amount</p>
@@ -188,8 +191,8 @@
             <button class="calculation__button" type="reset" disabled>
               RESET
             </button>
-          </section>
-        </form>
+          </div>
+        </div>
       </article>
     </main>
   </body>

@@ -78,7 +78,7 @@ export class Calculate extends Element implements CalculateInterface {
 
   // --------------------------- Event handler start ---------------------------
   private reset() {
-    this.obs.notifyCalculate();
+    this.obs.notifyReset(); // reset bill, tip, people & error state
     this.obs.notifyUI();
   }
 
@@ -99,8 +99,8 @@ export class Calculate extends Element implements CalculateInterface {
       billPerPerson <= 0 ? `$0.00` : `$${billPerPerson}`;
     const _tipPerPeople: string =
       tipPerPerson <= 0 ? `$0.00` : `$${tipPerPerson}`;
-    this.totalBillLabel.setInnerText(_billPerPerson);
-    this.totalTipLabel.setInnerText(_tipPerPeople);
+    this.totalBillLabel.setInnerText(_billPerPerson).done();
+    this.totalTipLabel.setInnerText(_tipPerPeople).done();
   }
 
   disableButton({ isDisabled }: { isDisabled: boolean }) {

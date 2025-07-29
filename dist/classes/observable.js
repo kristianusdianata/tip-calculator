@@ -4,7 +4,10 @@ export class Observable {
         this.calculateListeners = [];
         this.errorListeners = [];
         this.UIListener = [];
+        this.resetListener = [];
+        // ------------------------------ Notify end ------------------------------
     }
+    // ------------------------------ Subcribe start ------------------------------
     subcribeCalculate(listener) {
         if (Array.isArray(listener)) {
             this.calculateListeners.push(...listener);
@@ -29,6 +32,16 @@ export class Observable {
             this.UIListener.push(listener);
         }
     }
+    subcribeReset(listener) {
+        if (Array.isArray(listener)) {
+            this.resetListener.push(...listener);
+        }
+        else {
+            this.resetListener.push(listener);
+        }
+    }
+    // ------------------------------ Subcribe end ------------------------------
+    // ------------------------------ Unsubcribe start ------------------------------
     unSubcribeCalculate(targetListener) {
         this.calculateListeners = this.calculateListeners.filter((listener) => listener !== targetListener);
     }
@@ -38,6 +51,11 @@ export class Observable {
     unSubcribeUI(targetListener) {
         this.UIListener = this.UIListener.filter((listener) => listener !== targetListener);
     }
+    unSubcribeReset(targetListener) {
+        this.resetListener = this.resetListener.filter((listener) => listener !== targetListener);
+    }
+    // ------------------------------ Unsubcribe end ------------------------------
+    // ------------------------------ Notify start ------------------------------
     notifyCalculate() {
         arrayLoopHandler(this.calculateListeners, (func, _index) => {
             func();
@@ -50,6 +68,11 @@ export class Observable {
     }
     notifyUI() {
         arrayLoopHandler(this.UIListener, (func, _index) => {
+            func();
+        });
+    }
+    notifyReset() {
+        arrayLoopHandler(this.resetListener, (func, _index) => {
             func();
         });
     }

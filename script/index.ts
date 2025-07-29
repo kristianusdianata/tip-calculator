@@ -1,5 +1,5 @@
 import { Bill, Calculate, ErrorHandler, People, Tip } from "./classes/index.js";
-import { useClass, useElement, usePipeline } from "./utils/index.js";
+import { useClass } from "./utils/index.js";
 import { useValidator } from "./validator.js";
 
 const bill = useClass(Bill);
@@ -81,6 +81,11 @@ function billController() {
 
 // --------------------- Tip controller start ---------------------
 function tipController() {
+  const resetError = () => {
+    errorHandler.isError = false;
+    errorHandler.errMsg = "";
+  };
+
   const tipErrorHandler = () => {
     validateInput({ input: tip.value });
 
@@ -99,6 +104,7 @@ function tipController() {
   // Subscribe to observer's event
   tip.obs.subcribeError(tipErrorHandler);
   tip.obs.subcribeCalculate(calculation);
+  tip.obs.subcribeReset(resetError);
   tip.obs.subcribeUI([toggleButtonDisabled, updateOutputLabel, tipErrorUI]);
 
   // Set event listener
@@ -158,7 +164,7 @@ function calculateController() {
     calculate.disableButton({ isDisabled: true });
   };
 
-  calculate.obs.subcribeCalculate(resetValue);
+  calculate.obs.subcribeReset(resetValue);
   calculate.obs.subcribeUI(defaultUI);
 
   // Set event listener

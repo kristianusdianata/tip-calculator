@@ -67,6 +67,10 @@ function billController() {
 // --------------------- Bill controller end ---------------------
 // --------------------- Tip controller start ---------------------
 function tipController() {
+    const resetError = () => {
+        errorHandler.isError = false;
+        errorHandler.errMsg = "";
+    };
     const tipErrorHandler = () => {
         validateInput({ input: tip.value });
         if (errorHandler.isError && errorHandler.errMsg) {
@@ -82,6 +86,7 @@ function tipController() {
     // Subscribe to observer's event
     tip.obs.subcribeError(tipErrorHandler);
     tip.obs.subcribeCalculate(calculation);
+    tip.obs.subcribeReset(resetError);
     tip.obs.subcribeUI([toggleButtonDisabled, updateOutputLabel, tipErrorUI]);
     // Set event listener
     tip.attachEvent();
@@ -132,7 +137,7 @@ function calculateController() {
         });
         calculate.disableButton({ isDisabled: true });
     };
-    calculate.obs.subcribeCalculate(resetValue);
+    calculate.obs.subcribeReset(resetValue);
     calculate.obs.subcribeUI(defaultUI);
     // Set event listener
     calculate.attachEvent();

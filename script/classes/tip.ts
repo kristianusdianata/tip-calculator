@@ -12,7 +12,6 @@ export interface TipInterface {
   attachEvent(): void;
   errorUI({ isError, errMsg }: { isError: boolean; errMsg: string }): void;
   defaultUI(): void;
-  activeUI({ isActive }: { isActive: boolean }): void;
 }
 
 export class Tip extends Element implements TipInterface {
@@ -107,6 +106,9 @@ export class Tip extends Element implements TipInterface {
         radio.value !== null
       ) {
         this.value = Number(radio.value);
+        const input = this.input.done();
+        input.value = "";
+        this.obs.notifyReset(); // reset error state
         this.obs.notifyCalculate();
         this.obs.notifyUI();
       } else {
@@ -140,7 +142,7 @@ export class Tip extends Element implements TipInterface {
   }
 
   defaultUI(): void {
-    this.errorLabel.setInnerText("");
+    this.errorLabel.setInnerText("").done();
     const inputField = this.input
       .removeClass(`${this.blockName}__input--error`)
       .setAttribute({ "aria-invalid": "false" })
@@ -161,7 +163,7 @@ export class Tip extends Element implements TipInterface {
     });
   }
 
-  activeUI({ isActive }: { isActive: boolean }): void {
+  private activeUI({ isActive }: { isActive: boolean }): void {
     if (this.activeRadio) {
       useElement(
         <HTMLLabelElement>(

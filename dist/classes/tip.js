@@ -55,6 +55,9 @@ export class Tip extends Element {
                 radio.value !== undefined ||
                 radio.value !== null) {
                 this.value = Number(radio.value);
+                const input = this.input.done();
+                input.value = "";
+                this.obs.notifyReset(); // reset error state
                 this.obs.notifyCalculate();
                 this.obs.notifyUI();
             }
@@ -85,7 +88,7 @@ export class Tip extends Element {
             .done();
     }
     defaultUI() {
-        this.errorLabel.setInnerText("");
+        this.errorLabel.setInnerText("").done();
         const inputField = this.input
             .removeClass(`${this.blockName}__input--error`)
             .setAttribute({ "aria-invalid": "false" })

@@ -32,7 +32,7 @@ export class Calculate extends Element {
     }
     // --------------------------- Event handler start ---------------------------
     reset() {
-        this.obs.notifyCalculate();
+        this.obs.notifyReset(); // reset bill, tip, people & error state
         this.obs.notifyUI();
     }
     attachEvent() {
@@ -43,8 +43,8 @@ export class Calculate extends Element {
     updateOutputLabel({ billPerPerson, tipPerPerson, }) {
         const _billPerPerson = billPerPerson <= 0 ? `$0.00` : `$${billPerPerson}`;
         const _tipPerPeople = tipPerPerson <= 0 ? `$0.00` : `$${tipPerPerson}`;
-        this.totalBillLabel.setInnerText(_billPerPerson);
-        this.totalTipLabel.setInnerText(_tipPerPeople);
+        this.totalBillLabel.setInnerText(_billPerPerson).done();
+        this.totalTipLabel.setInnerText(_tipPerPeople).done();
     }
     disableButton({ isDisabled }) {
         const resetBtn = this.resetButton

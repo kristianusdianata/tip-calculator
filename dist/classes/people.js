@@ -38,14 +38,14 @@ export class People extends Element {
     // --------------------------- Event handler end ---------------------------
     // --------------------------- UI handler start ---------------------------
     errorUI({ isError, errMsg }) {
-        this.errorLabel.setInnerText(errMsg);
+        this.errorLabel.setInnerText(errMsg).done();
         this.input
             .toggleClass(`${this.blockName}__input--error`, isError)
             .setAttribute({ "aria-invalid": `${isError}` })
             .done();
     }
     defaultUI() {
-        this.errorLabel.setInnerText("");
+        this.errorLabel.setInnerText("").done();
         const inputField = this.input
             .removeClass(`${this.blockName}__input--error`)
             .setAttribute({ "aria-invalid": "false" })

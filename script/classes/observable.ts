@@ -6,19 +6,24 @@ export interface ObservableInterface {
   subcribeCalculate(listener: Func | Func[]): void;
   subcribeError(listener: Func | Func[]): void;
   subcribeUI(listener: Func | Func[]): void;
-  unSubcribeCalculate(listener: Func): void;
-  unSubcribeError(listener: Func): void;
-  unSubcribeUI(listener: Func): void;
+  subcribeReset(listener: Func | Func[]): void;
+  unSubcribeCalculate(targetListener: Func): void;
+  unSubcribeError(targetListener: Func): void;
+  unSubcribeUI(targetListener: Func): void;
+  unSubcribeReset(targetListener: Func): void;
   notifyCalculate(): void;
   notifyError(): void;
   notifyUI(): void;
+  notifyReset(): void;
 }
 
 export class Observable implements ObservableInterface {
   private calculateListeners: Func[] = [];
   private errorListeners: Func[] = [];
   private UIListener: Func[] = [];
+  private resetListener: Func[] = [];
 
+  // ------------------------------ Subcribe start ------------------------------
   subcribeCalculate(listener: Func | Func[]): void {
     if (Array.isArray(listener)) {
       this.calculateListeners.push(...listener);
@@ -43,6 +48,16 @@ export class Observable implements ObservableInterface {
     }
   }
 
+  subcribeReset(listener: Func | Func[]): void {
+    if (Array.isArray(listener)) {
+      this.resetListener.push(...listener);
+    } else {
+      this.resetListener.push(listener);
+    }
+  }
+  // ------------------------------ Subcribe end ------------------------------
+
+  // ------------------------------ Unsubcribe start ------------------------------
   unSubcribeCalculate(targetListener: Func): void {
     this.calculateListeners = this.calculateListeners.filter(
       (listener) => listener !== targetListener
@@ -61,6 +76,14 @@ export class Observable implements ObservableInterface {
     );
   }
 
+  unSubcribeReset(targetListener: Func): void {
+    this.resetListener = this.resetListener.filter(
+      (listener) => listener !== targetListener
+    );
+  }
+  // ------------------------------ Unsubcribe end ------------------------------
+
+  // ------------------------------ Notify start ------------------------------
   notifyCalculate(): void {
     arrayLoopHandler(this.calculateListeners, (func, _index) => {
       func();
@@ -78,4 +101,11 @@ export class Observable implements ObservableInterface {
       func();
     });
   }
+
+  notifyReset(): void {
+    arrayLoopHandler(this.resetListener, (func, _index) => {
+      func();
+    });
+  }
+  // ------------------------------ Notify end ------------------------------
 }
