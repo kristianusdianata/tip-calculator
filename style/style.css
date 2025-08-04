@@ -417,6 +417,7 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   row-gap: 2em;
   column-gap: 0.25em;
+  padding-block-end: 2em;
   overflow: hidden;
 }
 .output__title {
