@@ -57,7 +57,7 @@ export class People extends Element implements PeopleInterface {
     const inputValue = Number((event.target as HTMLInputElement).value);
     this.value = Number(inputValue);
     this.obs.notifyError();
-    this.obs.notifyCalculate();
+    this.obs.notifyOutput();
     this.obs.notifyUI();
   }
 

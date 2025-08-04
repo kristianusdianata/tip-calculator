@@ -26,7 +26,7 @@ export class Bill extends Element {
         const inputValue = Number(event.target.value);
         this.value = Number(inputValue);
         this.obs.notifyError();
-        this.obs.notifyCalculate();
+        this.obs.notifyOutput();
         this.obs.notifyUI();
     }
     attachEvent() {

@@ -2,7 +2,7 @@
 @use "../abstracts/index" as *;
 @use "../components/index" as *;
 
-.calculation {
+.output {
   display: flex;
   flex-direction: column;
   row-gap: map.get($spacing, 2);

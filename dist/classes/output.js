@@ -1,9 +1,9 @@
 import { Element } from "./element.js";
 import { useClass, useElement } from "../utils/index.js";
 import { Observable } from "./observable.js";
-export class Calculate extends Element {
+export class Output extends Element {
     constructor() {
-        super({ blockName: "calculation" });
+        super({ blockName: "output" });
         this._totalTipPerPeople = 0;
         this._totalBillPerPeople = 0;
         this._obs = useClass(Observable);

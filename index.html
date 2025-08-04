@@ -40,7 +40,7 @@
           </h1>
         </header>
 
-        <div role="form" class="form">
+        <section class="calculator">
           <div class="bill">
             <label for="bill" class="bill__label">Bill</label>
             <div class="bill__input-group">
@@ -164,36 +164,35 @@
             ></span>
           </div>
 
-          <div class="calculation">
-            <dl class="calculation__entry">
-              <dt class="calculation__title">
+          <div class="output">
+            <h2 class="sr-only">Calculation output</h2>
+            <dl class="output__entry">
+              <dt class="output__title">
                 <span class="title">Tip Amount</span>
                 <span class="subtitle">/ person</span>
               </dt>
 
-              <dd class="calculation__detail">
+              <dd class="output__detail">
                 <output class="output-price" id="tip-output" aria-live="polite"
                   >$0.00</output
                 >
               </dd>
 
-              <dt class="calculation__title">
+              <dt class="output__title">
                 <span class="title">Total</span>
                 <span class="subtitle">/ person</span>
               </dt>
 
-              <dd class="calculation__detail">
+              <dd class="output__detail">
                 <output class="output-price" id="bill-output" aria-live="polite"
                   >$0.00</output
                 >
               </dd>
             </dl>
 
-            <button class="calculation__button" type="reset" disabled>
-              RESET
-            </button>
+            <button class="output__button" type="reset" disabled>RESET</button>
           </div>
-        </div>
+        </section>
       </article>
     </main>
   </body>

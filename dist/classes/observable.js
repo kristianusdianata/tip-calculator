@@ -1,19 +1,19 @@
 import { arrayLoopHandler } from "../utils/index.js";
 export class Observable {
     constructor() {
-        this.calculateListeners = [];
+        this.outputListeners = [];
         this.errorListeners = [];
         this.UIListener = [];
         this.resetListener = [];
         // ------------------------------ Notify end ------------------------------
     }
     // ------------------------------ Subcribe start ------------------------------
-    subcribeCalculate(listener) {
+    subcribeOutput(listener) {
         if (Array.isArray(listener)) {
-            this.calculateListeners.push(...listener);
+            this.outputListeners.push(...listener);
         }
         else {
-            this.calculateListeners.push(listener);
+            this.outputListeners.push(listener);
         }
     }
     subcribeError(listener) {
@@ -42,8 +42,8 @@ export class Observable {
     }
     // ------------------------------ Subcribe end ------------------------------
     // ------------------------------ Unsubcribe start ------------------------------
-    unSubcribeCalculate(targetListener) {
-        this.calculateListeners = this.calculateListeners.filter((listener) => listener !== targetListener);
+    unSubcribeOutput(targetListener) {
+        this.outputListeners = this.outputListeners.filter((listener) => listener !== targetListener);
     }
     unSubcribeError(targetListener) {
         this.errorListeners = this.errorListeners.filter((listener) => listener !== targetListener);
@@ -56,8 +56,8 @@ export class Observable {
     }
     // ------------------------------ Unsubcribe end ------------------------------
     // ------------------------------ Notify start ------------------------------
-    notifyCalculate() {
-        arrayLoopHandler(this.calculateListeners, (func, _index) => {
+    notifyOutput() {
+        arrayLoopHandler(this.outputListeners, (func, _index) => {
             func();
         });
     }

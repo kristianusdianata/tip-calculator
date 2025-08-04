@@ -5,7 +5,7 @@ import { Observable } from "./observable.js";
 import type { ElementAPI } from "../utils/index.js";
 import type { ObservableInterface } from "./observable.js";
 
-export interface CalculateInterface {
+export interface OutputInterface {
   get totalTipPerPeople(): number;
   set totalTipPerPeople(val: number);
   get totalBillPerPeople(): number;
@@ -23,7 +23,7 @@ export interface CalculateInterface {
   defaultState(): void;
 }
 
-export class Calculate extends Element implements CalculateInterface {
+export class Output extends Element implements OutputInterface {
   private _totalTipPerPeople: number;
   private _totalBillPerPeople: number;
   private totalTipLabel: ElementAPI<HTMLOutputElement>;
@@ -32,7 +32,7 @@ export class Calculate extends Element implements CalculateInterface {
   private _obs: ObservableInterface;
 
   constructor() {
-    super({ blockName: "calculation" });
+    super({ blockName: "output" });
     this._totalTipPerPeople = 0;
     this._totalBillPerPeople = 0;
     this._obs = useClass(Observable);

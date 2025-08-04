@@ -1,41 +1,40 @@
-import { Bill, Calculate, ErrorHandler, People, Tip } from "./classes/index.js";
+import { Bill, Output, ErrorHandler, People, Tip } from "./classes/index.js";
 import { useClass } from "./utils/index.js";
 import { useValidator } from "./validator.js";
 
 const bill = useClass(Bill);
 const tip = useClass(Tip);
 const people = useClass(People);
-const calculate = useClass(Calculate);
+const output = useClass(Output);
 const errorHandler = useClass(ErrorHandler);
 
 function toggleButtonDisabled() {
   if (bill.value <= 0 && tip.value <= 0 && people.value <= 0) {
-    calculate.disableButton({ isDisabled: true });
+    output.disableButton({ isDisabled: true });
   } else {
-    calculate.disableButton({ isDisabled: false });
+    output.disableButton({ isDisabled: false });
   }
 }
 
 function updateOutputLabel() {
-  calculate.updateOutputLabel({
-    billPerPerson: calculate.totalBillPerPeople,
-    tipPerPerson: calculate.totalTipPerPeople,
+  output.updateOutputLabel({
+    billPerPerson: output.totalBillPerPeople,
+    tipPerPerson: output.totalTipPerPeople,
   });
 }
 
 function calculation() {
   if (bill.value <= 0 || tip.value <= 0 || people.value <= 0) {
-    calculate.totalTipPerPeople = 0;
-    calculate.totalBillPerPeople = 0;
+    output.totalTipPerPeople = 0;
+    output.totalBillPerPeople = 0;
     return;
   }
 
-  calculate.totalTipPerPeople =
+  output.totalTipPerPeople =
     Math.floor(((bill.value * tip.value) / people.value) * 100) / 100;
-  calculate.totalBillPerPeople =
-    Math.floor(
-      (bill.value / people.value + calculate.totalTipPerPeople) * 100
-    ) / 100;
+  output.totalBillPerPeople =
+    Math.floor((bill.value / people.value + output.totalTipPerPeople) * 100) /
+    100;
 }
 
 function validateInput({ input }: { input: any }) {
@@ -71,7 +70,7 @@ function billController() {
 
   // Subscribe to observer's event
   bill.obs.subcribeError(billErrorHandler);
-  bill.obs.subcribeCalculate(calculation);
+  bill.obs.subcribeOutput(calculation);
   bill.obs.subcribeUI([toggleButtonDisabled, updateOutputLabel, billErrorUI]);
 
   // Set event listener
@@ -103,7 +102,7 @@ function tipController() {
 
   // Subscribe to observer's event
   tip.obs.subcribeError(tipErrorHandler);
-  tip.obs.subcribeCalculate(calculation);
+  tip.obs.subcribeOutput(calculation);
   tip.obs.subcribeReset(resetError);
   tip.obs.subcribeUI([toggleButtonDisabled, updateOutputLabel, tipErrorUI]);
 
@@ -131,7 +130,7 @@ function peopleController() {
 
   // Subscribe to observer's event
   people.obs.subcribeError(peopleErrorHandler);
-  people.obs.subcribeCalculate(calculation);
+  people.obs.subcribeOutput(calculation);
   people.obs.subcribeUI([
     toggleButtonDisabled,
     updateOutputLabel,
@@ -143,13 +142,13 @@ function peopleController() {
 }
 // --------------------- People controller end ---------------------
 
-// --------------------- Calculate controller start ---------------------
-function calculateController() {
+// --------------------- Output controller start ---------------------
+function outputController() {
   const resetValue = () => {
     bill.defaultState();
     tip.defaultState();
     people.defaultState();
-    calculate.defaultState();
+    output.defaultState();
     errorHandler.defaultState();
   };
 
@@ -157,22 +156,22 @@ function calculateController() {
     bill.defaultUI();
     tip.defaultUI();
     people.defaultUI();
-    calculate.updateOutputLabel({
-      billPerPerson: calculate.totalBillPerPeople,
-      tipPerPerson: calculate.totalTipPerPeople,
+    output.updateOutputLabel({
+      billPerPerson: output.totalBillPerPeople,
+      tipPerPerson: output.totalTipPerPeople,
     });
-    calculate.disableButton({ isDisabled: true });
+    output.disableButton({ isDisabled: true });
   };
 
-  calculate.obs.subcribeReset(resetValue);
-  calculate.obs.subcribeUI(defaultUI);
+  output.obs.subcribeReset(resetValue);
+  output.obs.subcribeUI(defaultUI);
 
   // Set event listener
-  calculate.attachEvent();
+  output.attachEvent();
 }
 // --------------------- Calculate controller end ---------------------
 
 billController();
 tipController();
 peopleController();
-calculateController();
+outputController();

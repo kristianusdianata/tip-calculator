@@ -136,7 +136,7 @@ h1 {
   block-size: 3.5rem;
 }
 
-.form {
+.calculator {
   background-color: var(--white);
   border-radius: 20px;
   padding: 2em;
@@ -145,7 +145,7 @@ h1 {
   row-gap: 2em;
 }
 @media (min-width: 62rem) {
-  .form {
+  .calculator {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 2.5em;
@@ -403,7 +403,7 @@ h1 {
   }
 }
 
-.calculation {
+.output {
   display: flex;
   flex-direction: column;
   row-gap: 0.5em;
@@ -412,32 +412,32 @@ h1 {
   border-radius: 8px;
   justify-content: space-between;
 }
-.calculation__entry {
+.output__entry {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   row-gap: 2em;
   column-gap: 0.25em;
   overflow: hidden;
 }
-.calculation__title {
+.output__title {
   display: flex;
   flex-direction: column;
   row-gap: 0.5em;
 }
-.calculation__title .title {
+.output__title .title {
   font-size: 1rem;
   color: var(--white);
 }
-.calculation__title .subtitle {
+.output__title .subtitle {
   font-size: 0.8rem;
   color: var(--grey-400);
 }
-.calculation__detail {
+.output__detail {
   text-align: end;
   font-size: 2.441rem;
   color: var(--green-400);
 }
-.calculation__button {
+.output__button {
   font-size: 1.563rem;
   color: var(--green-900);
   background-color: var(--green-800);
@@ -446,16 +446,16 @@ h1 {
   border-radius: 8px;
   inline-size: 100%;
 }
-.calculation__button:not([disabled]):hover {
+.output__button:not([disabled]):hover {
   color: var(--green-900);
   background-color: var(--green-200);
 }
-.calculation__button--active {
+.output__button--active {
   color: var(--green-900);
   background-color: var(--green-400);
 }
 @media (min-width: 62rem) {
-  .calculation {
+  .output {
     grid-column: 2;
     grid-row: 1/span 3;
   }

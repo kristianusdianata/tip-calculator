@@ -3,32 +3,32 @@ import { arrayLoopHandler } from "../utils/index.js";
 type Func = () => void | Promise<void>;
 
 export interface ObservableInterface {
-  subcribeCalculate(listener: Func | Func[]): void;
+  subcribeOutput(listener: Func | Func[]): void;
   subcribeError(listener: Func | Func[]): void;
   subcribeUI(listener: Func | Func[]): void;
   subcribeReset(listener: Func | Func[]): void;
-  unSubcribeCalculate(targetListener: Func): void;
+  unSubcribeOutput(targetListener: Func): void;
   unSubcribeError(targetListener: Func): void;
   unSubcribeUI(targetListener: Func): void;
   unSubcribeReset(targetListener: Func): void;
-  notifyCalculate(): void;
+  notifyOutput(): void;
   notifyError(): void;
   notifyUI(): void;
   notifyReset(): void;
 }
 
 export class Observable implements ObservableInterface {
-  private calculateListeners: Func[] = [];
+  private outputListeners: Func[] = [];
   private errorListeners: Func[] = [];
   private UIListener: Func[] = [];
   private resetListener: Func[] = [];
 
   // ------------------------------ Subcribe start ------------------------------
-  subcribeCalculate(listener: Func | Func[]): void {
+  subcribeOutput(listener: Func | Func[]): void {
     if (Array.isArray(listener)) {
-      this.calculateListeners.push(...listener);
+      this.outputListeners.push(...listener);
     } else {
-      this.calculateListeners.push(listener);
+      this.outputListeners.push(listener);
     }
   }
 
@@ -58,8 +58,8 @@ export class Observable implements ObservableInterface {
   // ------------------------------ Subcribe end ------------------------------
 
   // ------------------------------ Unsubcribe start ------------------------------
-  unSubcribeCalculate(targetListener: Func): void {
-    this.calculateListeners = this.calculateListeners.filter(
+  unSubcribeOutput(targetListener: Func): void {
+    this.outputListeners = this.outputListeners.filter(
       (listener) => listener !== targetListener
     );
   }
@@ -84,8 +84,8 @@ export class Observable implements ObservableInterface {
   // ------------------------------ Unsubcribe end ------------------------------
 
   // ------------------------------ Notify start ------------------------------
-  notifyCalculate(): void {
-    arrayLoopHandler(this.calculateListeners, (func, _index) => {
+  notifyOutput(): void {
+    arrayLoopHandler(this.outputListeners, (func, _index) => {
       func();
     });
   }

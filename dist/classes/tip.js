@@ -33,7 +33,7 @@ export class Tip extends Element {
         const inputValue = Number(event.target.value);
         this.value = Number(inputValue);
         this.obs.notifyError();
-        this.obs.notifyCalculate();
+        this.obs.notifyOutput();
         this.obs.notifyUI();
     }
     inputFocusHandler(_event) {
@@ -58,7 +58,7 @@ export class Tip extends Element {
                 const input = this.input.done();
                 input.value = "";
                 this.obs.notifyReset(); // reset error state
-                this.obs.notifyCalculate();
+                this.obs.notifyOutput();
                 this.obs.notifyUI();
             }
             else {

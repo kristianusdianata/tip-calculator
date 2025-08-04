@@ -69,7 +69,7 @@ export class Tip extends Element implements TipInterface {
     const inputValue = Number((event.target as HTMLInputElement).value);
     this.value = Number(inputValue);
     this.obs.notifyError();
-    this.obs.notifyCalculate();
+    this.obs.notifyOutput();
     this.obs.notifyUI();
   }
 
@@ -109,7 +109,7 @@ export class Tip extends Element implements TipInterface {
         const input = this.input.done();
         input.value = "";
         this.obs.notifyReset(); // reset error state
-        this.obs.notifyCalculate();
+        this.obs.notifyOutput();
         this.obs.notifyUI();
       } else {
         this.value = 0;

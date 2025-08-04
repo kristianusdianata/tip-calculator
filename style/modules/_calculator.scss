@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "../abstracts/index" as *;
 
-.form {
+.calculator {
   background-color: var(--white);
   border-radius: map.get($radius, br-6);
   padding: map.get($spacing, 8);
