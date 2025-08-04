@@ -412,35 +412,27 @@ h1 {
   border-radius: 8px;
   justify-content: space-between;
 }
-.calculation__list-group {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2em;
-  padding-block-end: 2em;
-  overflow: hidden;
-}
-.calculation__list-item {
+.calculation__entry {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  row-gap: 0.25em;
+  row-gap: 2em;
   column-gap: 0.25em;
+  overflow: hidden;
 }
-.calculation__output-title {
-  grid-column: 1;
-  grid-row: 1;
+.calculation__title {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+}
+.calculation__title .title {
   font-size: 1rem;
   color: var(--white);
 }
-.calculation__output-subtitle {
-  grid-column: 1;
-  grid-row: 2;
+.calculation__title .subtitle {
   font-size: 0.8rem;
   color: var(--grey-400);
 }
-.calculation__output-price {
-  grid-column: 2;
-  grid-row: 1/span 2;
-  align-self: center;
+.calculation__detail {
   text-align: end;
   font-size: 2.441rem;
   color: var(--green-400);

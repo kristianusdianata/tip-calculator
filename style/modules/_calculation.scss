@@ -12,37 +12,29 @@
   border-radius: map.get($radius, br-3);
   justify-content: space-between;
 
-  &__list-group {
-    display: flex;
-    flex-direction: column;
+  &__entry {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: map.get($spacing, 8);
-    padding-block-end: map.get($spacing, 8);
+    column-gap: map.get($spacing, 1);
     overflow: hidden;
   }
 
-  &__list-item {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: map.get($spacing, 1);
-    column-gap: map.get($spacing, 1);
+  &__title {
+    display: flex;
+    flex-direction: column;
+    row-gap: map.get($spacing, 2);
+
+    .title {
+      @include font-preset-3($color: var(--white));
+    }
+
+    .subtitle {
+      @include font-preset-4($color: var(--grey-400));
+    }
   }
 
-  &__output-title {
-    grid-column: 1;
-    grid-row: 1;
-    @include font-preset-3($color: var(--white));
-  }
-
-  &__output-subtitle {
-    grid-column: 1;
-    grid-row: 2;
-    @include font-preset-4($color: var(--grey-400));
-  }
-
-  &__output-price {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    align-self: center;
+  &__detail {
     text-align: end;
     @include font-preset-5($color: var(--green-400));
   }

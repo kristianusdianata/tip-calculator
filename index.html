@@ -40,12 +40,12 @@
           </h1>
         </header>
 
-        <div role="form" class="form" aria-labelledby="app-title">
-          <div class="bill" role="group" aria-labelledby="bill-label">
-            <label for="bill" class="bill__label" id="bill-label">Bill</label>
+        <div role="form" class="form">
+          <div class="bill">
+            <label for="bill" class="bill__label">Bill</label>
             <div class="bill__input-group">
               <div class="bill__input-icon">
-                <img src="./images/icon-dollar.svg" alt="" />
+                <img src="./images/icon-dollar.svg" alt="" aria-hidden="true" />
               </div>
 
               <input
@@ -62,12 +62,9 @@
             <span id="bill-error" role="alert" class="bill__label-error"></span>
           </div>
 
-          <div class="tip" role="group" aria-label="Select Tip Percentage">
-            <ul
-              class="tip__list-group"
-              role="radiogroup"
-              aria-label="Select Tip Percentage"
-            >
+          <fieldset class="tip">
+            <legend class="sr-only">Select Tip Percentage</legend>
+            <ul class="tip__list-group">
               <li class="tip__list-item">
                 <input
                   name="tip-radio"
@@ -139,17 +136,14 @@
                 />
               </li>
             </ul>
-
             <span id="tip-error" role="alert" class="tip__label-error"></span>
-          </div>
+          </fieldset>
 
-          <div class="people" role="group" aria-labelledby="people-label">
-            <label for="people" class="people__label" id="people-label"
-              >Number of People</label
-            >
+          <div class="people">
+            <label for="people" class="people__label">Number of People</label>
             <div class="people__input-group">
               <div class="people__input-icon">
-                <img src="./images/icon-person.svg" alt="" />
+                <img src="./images/icon-person.svg" alt="" aria-hidden="true" />
               </div>
 
               <input
@@ -170,30 +164,30 @@
             ></span>
           </div>
 
-          <div class="calculation" role="group" aria-label="Calculation Result">
-            <ul class="calculation__list-group">
-              <li class="calculation__list-item">
-                <p class="calculation__output-title">Tip Amount</p>
-                <span class="calculation__output-subtitle">/ person</span>
-                <output
-                  class="calculation__output-price"
-                  id="tip-output"
-                  aria-live="polite"
-                  >$0.00</output
-                >
-              </li>
+          <div class="calculation" aria-label="Calculation Result">
+            <dl class="calculation__entry">
+              <dt class="calculation__title">
+                <span class="title">Tip Amount</span>
+                <span class="subtitle">/ person</span>
+              </dt>
 
-              <li class="calculation__list-item">
-                <p class="calculation__output-title">Total</p>
-                <span class="calculation__output-subtitle">/ person</span>
-                <output
-                  class="calculation__output-price"
-                  id="bill-output"
-                  aria-live="polite"
+              <dd class="calculation__detail">
+                <output class="output-price" id="tip-output" aria-live="polite"
                   >$0.00</output
                 >
-              </li>
-            </ul>
+              </dd>
+
+              <dt class="calculation__title">
+                <span class="title">Total</span>
+                <span class="subtitle">/ person</span>
+              </dt>
+
+              <dd class="calculation__detail">
+                <output class="output-price" id="bill-output" aria-live="polite"
+                  >$0.00</output
+                >
+              </dd>
+            </dl>
 
             <button class="calculation__button" type="reset" disabled>
               RESET
